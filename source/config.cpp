@@ -23,3 +23,29 @@ class CfgFunctions
 		};
 	};
 };
+
+class CfgRemoteExec
+{
+	class Functions
+	{
+		class SXP_fnc_ffT_init {
+			allowedTargets = 2;
+		};
+		class SXP_fnc_ffT_handleFF {
+			allowedTargets = 2;
+		};
+		class SXP_fnc_ffT_writeLoop {
+			allowedTargets = 2;
+		};
+		class SXP_fnc_ffT_writeLog {
+			allowedTargets = 2;
+		};
+		class SXP_fnc_ffT_clientEventHandler {
+			allowedTargets = 1;
+		};
+		class SXP_fnc_ffT_clientInit {
+			allowedTargets = 1;
+			jip = 1;
+		};
+	};
+};
