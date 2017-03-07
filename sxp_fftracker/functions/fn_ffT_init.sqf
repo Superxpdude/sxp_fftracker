@@ -15,6 +15,7 @@ _nul = addMissionEventHandler ["Ended", {
 
 // Define the addEventHandler function
 SXP_fnc_ffT_clientEventHandler = compileFinal "
+	waitUntil {player == player};
 	player addEventHandler ['Hit', {
 		if (([side (_x select 0), side (_x select 3)] call BIS_fnc_sideIsFriendly) AND ((_x select 0) != (_x select 3))) then {
 			[_x select 0, _x select 3, _x select 1] remoteExec ['SXP_fnc_ffT_handleFF', 2];
@@ -22,17 +23,7 @@ SXP_fnc_ffT_clientEventHandler = compileFinal "
 	}];
 ";
 
-// Define the client-function
-SXP_fnc_ffT_clientInit = compileFinal "
-	[] call SXP_fnc_ffT_clientEventHandler;
-	
-	player addEventHandler ['Respawn', {
-		[] call SXP_fnc_ffT_clientEventHandler;
-	}];
-";
-
 // Send the variables to all clients
 publicVariable "SXP_fnc_ffT_clientEventHandler";
-publicVariable "SXP_fnc_ffT_clientInit";
 
-[] remoteExec ["SXP_fnc_ffT_clientInit", -2, true];
+[] remoteExec ["SXP_fnc_ffT_clientEventHandler", -2, true];
