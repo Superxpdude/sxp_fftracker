@@ -10,11 +10,13 @@ SXP_ffQueue = [];
 
 // Start the loop
 [] spawn {
-	{
-		_x call SXP_fnc_ffT_writeLog;
-	} forEach SXP_ffQueue;
-	// Clear the write queue
-	SXP_ffQueue = [];
-	// Wait 30 seconds before processing the array again
-	sleep 30;
+	while {true} do {
+		{
+			_x call SXP_fnc_ffT_writeLog;
+		} forEach SXP_ffQueue;
+		// Clear the write queue
+		SXP_ffQueue = [];
+		// Wait 30 seconds before processing the array again
+		sleep 30;
+	};
 };

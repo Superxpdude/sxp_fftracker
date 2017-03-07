@@ -5,6 +5,14 @@
 // Exit the script if for some reason this isn't run on the server
 if (!isServer) exitWith {};
 
+// Add our mission event handler
+// Writes the friendly-fire cache to the .rpt when the mission ends
+_nul = addMissionEventHandler ["Ended", {
+	{
+		_x call SXP_fnc_ffTWriteLog;
+	} forEach SXP_ffQueue;
+}];
+
 // Define the addEventHandler function
 SXP_fnc_ffT_clientEventHandler = compileFinal "
 	player addEventHandler ['Hit', {
