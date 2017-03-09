@@ -17,8 +17,8 @@ _nul = addMissionEventHandler ["Ended", {
 SXP_fnc_ffT_clientEventHandler = compileFinal "
 	waitUntil {player == player};
 	player addEventHandler ['Hit', {
-		if (([side (_x select 0), side (_x select 3)] call BIS_fnc_sideIsFriendly) AND ((_x select 0) != (_x select 3))) then {
-			[_x select 0, _x select 3, _x select 1] remoteExec ['SXP_fnc_ffT_handleFF', 2];
+		if (([side (_this select 0), side (_this select 3)] call BIS_fnc_sideIsFriendly) AND ((_this select 0) != (_this select 3))) then {
+			[_this select 0, _this select 3, _this select 1] remoteExec ['SXP_fnc_ffT_handleFF', 2];
 		};
 	}];
 ";
